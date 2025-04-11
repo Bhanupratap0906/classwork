@@ -1,5 +1,4 @@
-class Solution:
-    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+def nextGreaterElement(nums1, nums2):
             stack  =[]
             next_greater ={}
             for num in nums2:
@@ -14,6 +13,9 @@ class Solution:
                 else:
                     nums1[i] = -1
             return nums1
+nums1 =[]
+nums2 = []
+print(nextGreaterElement(nums1, nums2))    
 
 
 

@@ -1,5 +1,4 @@
-class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
+def longestConsecutive(nums):
         if not nums:
             return 0
         nums.sort()
@@ -18,3 +17,5 @@ class Solution:
                 curr_count = 1
                 i+=1
         return max(max_count,curr_count )
+nums =[]
+print(longestConsecutive(nums))

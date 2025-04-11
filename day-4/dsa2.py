@@ -1,5 +1,4 @@
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
+def removeDuplicates(nums):
         if not nums:
             return 0
         k = 1
@@ -8,3 +7,5 @@ class Solution:
                 nums[k] = nums[i]
                 k+=1
         return k
+nums = []
+print(removeDuplicates(nums))
