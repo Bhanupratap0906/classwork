@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .otp-box{
+            display: flex;
+            gap :10px;
+            justify-content: center;
+            margin:50px
+        
+        }
+        .otp-box input{
+            width:40px;
+            height:40px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button{
+            width:100px;
+            padding:10px;
+        }
+        
+    </style>
+</head>
+<body class="body">
+    <div class="otp-box">
+        <input type="text" maxlength="1"/>
+        <input type="text" maxlength="1"/>
+        <input type="text" maxlength="1"/>
+        <input type="text" maxlength="1"/>
+        <input type="text" maxlength="1"/>
+        <input type="text" maxlength="1"/>
+        
+    </div>
+    <button class="button">submit</button>
+</body>
+</html>
+<script>
+    const inputs = document.querySelectorAll('.otp-box input')
+    inputs.forEach((input , index)=>{
+       input.addEventListener('input' ,(e)=>{
+        const value = e.target.value;
+        if(!/^\d$/.test(value)){
+            e.target.value = ''
+            return
+        }
+        if(value && index<inputs.length-1){
+            inputs[index+1].focus()
+        }
+       }) 
+       input.addEventListener('keydown',(e)=>{
+        if(e.key ==='Backspace')
+        {if(e.target.value){e.target.value =''}
+        else if(index>0){
+            inputs[index-1].focus();
+            inputs[index-1 ].value =''
+        }
+    }})
+    })
+    inputs[0].focus()
+    const submitButton = document.querySelector('.button')
+    submitButton.addEventListener('click', () => {
+        const otp = Array.from(inputs).map(input => input.value).join('');
+        if (otp.length < inputs.length) {
+            alert("Please enter full OTP.");
+        } else {
+            alert("Entered OTP is: " + otp);
+            
+        }
+    });
+</script>
